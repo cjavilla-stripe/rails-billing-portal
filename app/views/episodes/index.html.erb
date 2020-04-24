@@ -1,0 +1,26 @@
+<style>
+.episode {
+  padding: 10px;
+}
+.episode a {
+  font-size: 1.2em;
+}
+</style>
+
+<hr>
+
+<h1>Episodes</h1>
+
+
+<% @episodes.each do |ep| %>
+  <div class="episode">
+    <%= link_to ep.title, ep.link %>
+    <br />
+    <span class="text-muted"><%= ep.pubDate %></span>
+    <br />
+    <span><%= ep.description %></span>
+    <br />
+    <audio controls="true" preload="none" src="<%= ep.enclosure.url %>"></audio>
+  </div>
+  <hr>
+<% end %>

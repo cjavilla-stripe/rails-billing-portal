@@ -30,14 +30,13 @@
 }
 </style>
 
-<form class="form-signin" action="/user" method="POST">
+<form class="form-signin" action="/session" method="POST">
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
   <img class="mb-4" src="/avillatheory.png" alt="" width="72" height="72">
-  <h1 class="h3 mb-3 font-weight-normal">Create an Account</h1>
+  <h1 class="h3 mb-3 font-weight-normal">Sign in</h1>
   <label for="inputEmail" class="sr-only">Email address</label>
   <input type="email" name="user[email]" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
   <label for="inputPassword" class="sr-only">Password</label>
   <input type="password" name="user[password]" id="inputPassword" class="form-control" placeholder="Password" required="">
-  <input type="hidden" type="text" value="<%= params[:plan] %>" name="user[plan]">
-  <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
+  <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
 </form>
