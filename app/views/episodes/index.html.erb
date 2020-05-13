@@ -18,9 +18,12 @@
     <br />
     <span class="text-muted"><%= ep.pubDate %></span>
     <br />
-    <span><%= ep.description %></span>
+    <span><%= ep.description.html_safe %></span>
     <br />
     <audio controls="true" preload="none" src="<%= ep.enclosure.url %>"></audio>
   </div>
   <hr>
+<% end %>
+<% if @episodes.length == 0 %>
+  <i>No episodes available.</i>
 <% end %>
