@@ -7,9 +7,10 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    if @user.save
+    if @user.valid?
       customer = create_stripe_customer(@user)
       @session = create_checkout_session(customer, @user)
+      @user.save!
       session[:token] = @user.session_token
       render :checkout
     else
@@ -32,14 +33,18 @@ class UsersController < ApplicationController
   end
 
   def create_checkout_session(customer, user)
+    price = Stripe::Price.list(lookup_keys: [user.plan]).data.first
+
     Stripe::Checkout::Session.create({
       customer: customer.id,
       success_url: 'http://localhost:3000/success',
       cancel_url: 'http://localhost:3000/cancel',
       payment_method_types: ['card'],
-      subscription_data: {
-        items: [{ plan: plans[user.plan] }],
-      },
+      line_items: [{
+        price: price.id,
+        quantity: 1,
+      }],
+      mode: 'subscription',
     })
   end
 

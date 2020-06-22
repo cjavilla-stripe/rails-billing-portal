@@ -1,14 +1,6 @@
 class ApplicationController < ActionController::Base
   helper_method :current_user
 
-  def plans
-    {
-      'starter' => 'price_H9W9xkxMbPTk3y',
-      'pro' => 'price_H9W9RCs3owmpDv',
-      'enterprise' => 'price_H9W9ppxyCE1e2y',
-    }
-  end
-
   def logged_in?
     !!current_user
   end
