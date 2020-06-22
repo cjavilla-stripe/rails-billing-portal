@@ -14,6 +14,11 @@
       Sub status: <%= current_user.subscription_status %><br>
       Sub plan: <%= current_user.plan %><br>
 
+      <form action="/customer_portal_sessions" method="post">
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+        <input type="submit" value="Manage billing">
+      </form>
+
       <%= yield %>
 
       <footer class="pt-4 my-md-5 pt-md-5 border-top">

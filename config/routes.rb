@@ -8,5 +8,5 @@ Rails.application.routes.draw do
   resource :session
   resources :webhooks
   resources :episodes
-  resources :portal_sessions, only: [:create]
+  resources :customer_portal_sessions, only: [:create]
 end
